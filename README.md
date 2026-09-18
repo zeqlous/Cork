@@ -1,82 +1,76 @@
-# 𑣲⋆ Cork - A Public Corkboard
+# Cork — Real-Time Community Marketplace Board
 
-A y2k-themed public bulletin board application. Cork allows users to post item listings, search through existing posts, and view live updates in real time. 
+A real-time bulletin board web app for posting and browsing item listings, rebuilt from vanilla JavaScript into a strictly typed, component-driven React architecture.
 
-Built as a portfolio project to demonstrate modern full-stack frontend practices, moving from imperative JavaScript DOM manipulation to a strictly typed, component-driven React architecture.
+**Live demo:** https://zeqlous.github.io/Cork/
 
----
+## Overview
 
-## 𓏲ּ𝄢 Purpose & Motivation ⁺‧₊˚ ཐི⋆♱⋆ཋྀ ˚₊‧⁺
+Cork started as a vanilla JavaScript DOM-manipulation project and was migrated into a typed React application. The rewrite focuses on three things:
 
-Cork was created to showcase a real-world refactoring workflow: taking a functional vanilla JS/HTML/CSS dynamic app and migrating it into a scalable **TypeScript + React** architecture backed by a real-time database.
+- **Type safety** — Firestore documents are modeled with strict TypeScript interfaces to eliminate a class of runtime errors.
+- **Declarative UI** — imperative DOM creation (`document.createElement`) was replaced with reactive state and modular React components.
+- **Automated deployment** — a GitHub Actions CI/CD pipeline builds the app with Vite and deploys to GitHub Pages on every push to `main`.
 
-### ✮ Core Objectives:
-- **Type Safety:** Eliminate runtime dynamic type errors by modeling Firestore documents with strict TypeScript interfaces.
-- **Declarative UI:** Replace imperative DOM creation (`document.createElement`) with reactive state management and modular React components.
-- **Production Pipeline:** Implement automated CI/CD deployment pipelines using GitHub Actions for static asset bundling via Vite.
+## Tech Stack
 
----
+- **Frontend:** React 18, TypeScript
+- **Styling:** Custom CSS (CSS Grid, Flexbox)
+- **Build tool:** Vite
+- **Database:** Firebase Firestore (NoSQL)
+- **Deployment:** GitHub Pages via GitHub Actions
 
-## ˙⋆✮ Tech Stack & Architecture
+## Features
 
-- **Frontend Framework:** React 18
-- **Language:** TypeScript
-- **Styling:** Custom CSS3 (Metallic Y2K aesthetic, CSS Grid, Flexbox)
-- **Build Tooling:** Vite
-- **Database:** Firebase Firestore (NoSQL Document Store)
-- **Deployment:** GitHub Pages via GitHub Actions CI/CD
+- **Real-time sync** — new listings appear for every connected client instantly via Firestore snapshot listeners.
+- **Live search & filtering** — client-side filtering across title, description, and seller fields.
+- **Flexible sorting** — Newest, Oldest, or alphabetical (A–Z).
+- **Input validation** — standardized USD price formatting and sanitized text input to prevent XSS.
+- **Responsive layout** — CSS Grid layout that adapts across desktop and mobile.
 
----
+## Performance
 
-## .☘︎ ݁˖ Features & Site Capabilities ⋆˚꩜｡ּ
+| Metric | Value |
+|---|---|
+| Initial load time | < 1.2s (Vite production build) |
+| Real-time update latency | ~100–300ms (Firestore `onSnapshot`) |
+| Client-side search time | < 10ms |
+| Gzipped bundle size | ~150 KB (React + Firebase SDK) |
 
-- **Real-Time Data Syncing:** Posts update instantly across all connected clients using Firestore snapshot listeners.
-- **Dynamic Search & Filtering:** Client-side instant filtering across titles, item descriptions, and seller info.
-- **Flexible Sorting:** Sort posts dynamically by date added (newest/oldest) or alphabetically by title.
-- **Sanitized Form Inputs:** Auto-formats pricing inputs into clean USD currency values ($XX.XX) with image URL fallback handling.
-- **Responsive Y2K UI:** Fully responsive CSS grid layout that mimics early-2000s desktop software aesthetics.
-
----
-
-## ☣︎ Technical Capabilities & Metrics
-
-| Capability / Metric | Specification / Benchmark |
-| :--- | :--- |
-| **Average Initial Load Time** | `< 1.2s` (optimized static build bundle via Vite) |
-| **Real-Time Data Latency** | `~100ms - 300ms` (Firestore `onSnapshot` updates) |
-| **Search Query Time** | `< 10ms` (in-memory client-side array filtering) |
-| **Build Bundle Size** | `~150 KB` gzipped (including React runtime & Firebase SDK) |
-| **Concurrent Reads/Writes** | Handles up to **100,000 active connections** simultaneously (Firebase Firestore free tier limits) |
-| **Database Operations** | **50,000 free reads / 20,000 free writes** per day |
-
----
-
-## ⫘⫘⫘ Local Development Setup ⫘⫘⫘
+## Local Setup
 
 ### Prerequisites
-- Node.js (`v18.0.0` or higher)
-- npm (`v9.0.0` or higher)
-- You'll need to create your own Firestore db: [Firestore Docs](https://firebase.google.com/docs/firestore)
+- Node.js v18.0.0+
+- npm v9.0.0+
+- A Firebase Firestore project ([setup docs](https://firebase.google.com/docs/firestore))
 
 ### Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/zeqlous/Cork.git
-   cd Cork
-2. Install dependencies:
-   ```bash
-   npm install
-3. Configure environment variables by creating a `.env.local` file in project root:
-   ```
-   VITE_FIREBASE_API_KEY=your_api_key
-   VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
-   VITE_FIREBASE_PROJECT_ID=your_project_id
-   VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
-   VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-   VITE_FIREBASE_APP_ID=your_app_id
-4. Run local development server:
-   ```bash
-   npm run dev
-5. Build for local production:
-   ```bash
-   npm run build
+
+```bash
+git clone https://github.com/zeqlous/Cork.git
+cd Cork
+npm install
+```
+
+Create a `.env.local` file in the project root:
+
+```
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+```
+
+Run the dev server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
