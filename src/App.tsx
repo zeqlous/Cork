@@ -70,14 +70,19 @@ export const App: React.FC = () => {
     <>
       <h1>Cork</h1>
 
-      <div className="top-bar">
+      <div className="top-bar" role="search">
+        <label htmlFor="search-input" className="sr-only">
+          Search items or sellers...
+        </label>
         <input
+          id="search-input"
           type="text"
           placeholder="Search items or sellers..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <select
+          id="sort-select"
           value={sortMode}
           onChange={(e) => setSortMode(e.target.value as SortOption)}
         >
@@ -86,6 +91,14 @@ export const App: React.FC = () => {
           <option value="title">Sort by: Name (A-Z)</option>
         </select>
       </div>
+
+      <button 
+        className="fab" 
+        onClick={() => setIsModalOpen(true)}
+        aria-label="Create a new post"
+      >
+        +
+      </button>
 
       <div className="board-grid">
         {filteredPosts.map((item, index) => (

@@ -50,47 +50,75 @@ export const PostModal: React.FC<PostModalProps> = ({ isOpen, onClose, onPostCre
   };
 
   return (
-    <div className="modal-overlay active" onClick={(e) => e.target === e.currentTarget && onClose()}>
+    <div 
+      className="modal-overlay active" 
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
       <div className="form-container">
         <div className="modal-header">
-          <h2>Post an Item</h2>
-          <button className="close-btn" onClick={onClose}>&times;</button>
+          <h2 id="modal-title">Post an Item</h2>
+          <button 
+            type="button" 
+            className="close-btn" 
+            onClick={onClose}
+            aria-label="Close form modal"
+          >
+            &times;
+          </button>
         </div>
         <form onSubmit={handleSubmit}>
+          <label htmlFor="title" className="sr-only">Item Name</label>
           <input
+            id="title"
             type="text"
             placeholder="Item Name"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
           />
+
+          <label htmlFor="price" className="sr-only">Price</label>
           <input
+            id="price"
             type="text"
             placeholder="Price (e.g. $15 or Free)"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             required
           />
+
+          <label htmlFor="imageUrl" className="sr-only">Image URL (optional)</label>
           <input
+            id="imageUrl"
             type="url"
             placeholder="Image URL (optional)"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
           />
+
+          <label htmlFor="description" className="sr-only">Description</label>
           <textarea
+            id="description"
             placeholder="Short description..."
             rows={3}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
           />
+
+          <label htmlFor="seller" className="sr-only">Your Name / Contact Info</label>
           <input
+            id="seller"
             type="text"
             placeholder="Your Name / Contact Info"
             value={seller}
             onChange={(e) => setSeller(e.target.value)}
             required
           />
+
           <button type="submit">Pin to Board</button>
         </form>
       </div>
