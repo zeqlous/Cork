@@ -28,14 +28,15 @@ Cork started as a vanilla JavaScript DOM-manipulation project and was migrated i
 - **Input validation** — standardized USD price formatting and sanitized text input to prevent XSS.
 - **Responsive layout** — CSS Grid layout that adapts across desktop and mobile.
 
-## Performance
+## Performance (Metrics measured with npm and Chrome DevTools)
 
 | Metric | Value |
 |---|---|
-| Initial load time | < 1.2s (Vite production build) |
-| Real-time update latency | ~100–300ms (Firestore `onSnapshot`) |
-| Client-side search time | < 10ms |
-| Gzipped bundle size | ~150 KB (React + Firebase SDK) |
+| First Contentful Paint | ~0.4s |
+| Largest Contentful Paint | ~0.9s |
+| Real-time update latency | ~100ms (Firestore `onSnapshot`) |
+| Client-side search time | <10ms |
+| Gzipped bundle size | ~208.65 KB (React + Firebase SDK) |
 
 ## Local Setup
 
