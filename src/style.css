@@ -1,31 +1,120 @@
+:root {
+  /* Page & Grid */
+  --bg-main: #d8dcdb;
+  --bg-grid-line: rgba(255, 255, 255, 0.3);
+  --text-main: #1a1a1a;
+  --text-heading: #2b2b2b;
+  --heading-shadow: #ffffff;
+
+  /* UI Containers (Top Bar, Modals, Forms) */
+  --ui-bg-gradient: linear-gradient(180deg, #f0f0f0 0%, #c8cac9 100%);
+  --ui-border: #7a7c7b;
+  --ui-border-dark: #5a5c5b;
+  --ui-shadow: #4a4b4a;
+  --ui-shadow-dark: #2a2b2a;
+  --ui-highlight: #ffffff;
+  --input-bg: #ffffff;
+
+  /* Floating Action Buttons */
+  --fab-bg-gradient: linear-gradient(180deg, #e6e6e6 0%, #a3a5a4 100%);
+  --fab-border-inner: #ffffff;
+
+  /* Cards */
+  --card-bg: #f4f4f4;
+  --card-border: #7a7c7b;
+  --card-shadow: #4a4b4a;
+  --card-header-gradient: linear-gradient(90deg, #8a8c8b 0%, #c8cac9 100%);
+  --card-price-color: #1b5e20;
+  --card-text: #333333;
+  --card-seller-text: #555555;
+  --card-divider: #aaaaaa;
+  --card-img-filter: grayscale(20%);
+
+  /* Modal Overlay */
+  --modal-overlay-bg: rgba(40, 40, 40, 0.6);
+}
+
+body.theme-cyber {
+  --bg-main: #121316;
+  --bg-grid-line: rgba(255, 255, 255, 0.05);
+  --text-main: #e2e8f0;
+  --text-heading: #f1f5f9;
+  --heading-shadow: #000000;
+  --ui-bg-gradient: linear-gradient(180deg, #2a2d34 0%, #1a1c22 100%);
+  --ui-border: #4a4e58;
+  --ui-border-dark: #383c44;
+  --ui-shadow: #08090a;
+  --ui-shadow-dark: #000000;
+  --ui-highlight: rgba(255, 255, 255, 0.1);
+  --input-bg: #181a1f;
+  --fab-bg-gradient: linear-gradient(180deg, #383c44 0%, #202228 100%);
+  --fab-border-inner: #4a4e58;
+  --card-bg: #1e2024;
+  --card-border: #383c44;
+  --card-shadow: #08090a;
+  --card-header-gradient: linear-gradient(90deg, #383c44 0%, #2a2d34 100%);
+  --card-price-color: #00ff66;
+  --card-text: #cbd5e1;
+  --card-seller-text: #94a3b8;
+  --card-divider: #383c44;
+  --card-img-filter: grayscale(10%) contrast(105%);
+  --modal-overlay-bg: rgba(0, 0, 0, 0.8);
+}
+
+body.theme-darkroom {
+  --bg-main: #1a1816;
+  --bg-grid-line: rgba(210, 190, 160, 0.08);
+  --text-main: #ece6dc;
+  --text-heading: #f5f0e6;
+  --heading-shadow: #000000;
+  --ui-bg-gradient: linear-gradient(180deg, #332f2b 0%, #201d1a 100%);
+  --ui-border: #524a42;
+  --ui-border-dark: #3b352f;
+  --ui-shadow: #0d0c0b;
+  --ui-shadow-dark: #000000;
+  --ui-highlight: rgba(255, 255, 255, 0.08);
+  --input-bg: #221f1c;
+  --fab-bg-gradient: linear-gradient(180deg, #443e38 0%, #282420 100%);
+  --fab-border-inner: #524a42;
+  --card-bg: #262320;
+  --card-border: #443e38;
+  --card-shadow: #0d0c0b;
+  --card-header-gradient: linear-gradient(90deg, #443e38 0%, #332f2b 100%);
+  --card-price-color: #e5a95d;
+  --card-text: #d6cecf;
+  --card-seller-text: #a69c8e;
+  --card-divider: #443e38;
+  --card-img-filter: sepia(30%) contrast(105%);
+  --modal-overlay-bg: rgba(0, 0, 0, 0.82);
+}
+
 * {
   box-sizing: border-box;
   font-family: 'Courier New', Courier, monospace;
 }
 
 body {
-  /* Metallic Silver / Gray Y2K background */
-  background-color: #d8dcdb;
+  background-color: var(--bg-main);
   background-image: 
-    linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px),
-    linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px);
+    linear-gradient(90deg, var(--bg-grid-line) 1px, transparent 1px),
+    linear-gradient(var(--bg-grid-line) 1px, transparent 1px);
   background-size: 20px 20px;
-  color: #1a1a1a;
+  color: var(--text-main);
   margin: 0;
   padding: 12px;
 }
 
 h1 {
   text-align: center;
-  color: #2b2b2b;
+  color: var(--text-heading);
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 1.8rem;
   margin-bottom: 25px;
-  text-shadow: 1px 1px 0px #fff;
+  text-shadow: 1px 1px 0px var(--heading-shadow);
 }
 
-/* Sticky Action Bar */
+/* Top Search Bar */
 .top-bar {
   position: sticky;
   top: 10px;
@@ -35,18 +124,18 @@ h1 {
   gap: 8px;
   max-width: 1100px;
   margin: 0 auto 20px auto;
-  background: linear-gradient(180deg, #f0f0f0 0%, #c8cac9 100%);
+  background: var(--ui-bg-gradient);
   padding: 8px;
-  border: 2px solid #7a7c7b;
-  box-shadow: inset 1px 1px 0px #fff, 3px 3px 0px #4a4b4a;
+  border: 2px solid var(--ui-border);
+  box-shadow: inset 1px 1px 0px var(--ui-highlight), 3px 3px 0px var(--ui-shadow);
 }
 
 .top-bar input,
 .top-bar select {
   padding: 8px;
-  border: 2px solid #7a7c7b;
-  background: #ffffff;
-  color: #1a1a1a;
+  border: 2px solid var(--ui-border);
+  background: var(--input-bg);
+  color: var(--text-main);
   font-size: 0.85rem;
   font-weight: bold;
   outline: none;
@@ -55,39 +144,50 @@ h1 {
   min-width: 0;
 }
 
-.top-bar input {
-  flex: 1;
-}
-
-.top-bar select {
-  flex: 1;
-}
-
-/* Floating Action Button (+) */
+/* Floating Action Buttons */
 .fab {
   position: fixed;
   bottom: 30px;
   right: 30px;
   width: 55px;
   height: 55px;
-  background: linear-gradient(180deg, #e6e6e6 0%, #a3a5a4 100%);
-  color: #1a1a1a;
+  background: var(--fab-bg-gradient);
+  color: var(--text-main);
   font-size: 28px;
   font-weight: bold;
-  border: 2px solid #ffffff;
-  outline: 2px solid #5a5c5b;
+  border: 2px solid var(--fab-border-inner);
+  outline: 2px solid var(--ui-border-dark);
   cursor: pointer;
-  box-shadow: 4px 4px 0px #2a2b2a;
+  box-shadow: 4px 4px 0px var(--ui-shadow-dark);
   z-index: 99;
   transition: transform 0.1s;
 }
 
-.fab:active {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px #2a2b2a;
+.fab-help {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: var(--fab-bg-gradient);
+  color: var(--text-main);
+  font-size: 22px;
+  font-weight: bold;
+  border: 2px solid var(--fab-border-inner);
+  outline: 2px solid var(--ui-border-dark);
+  cursor: pointer;
+  box-shadow: 4px 4px 0px var(--ui-shadow-dark);
+  z-index: 99;
+  transition: transform 0.1s;
 }
 
-/* Modal Popup Overlay */
+.fab:active, .fab-help:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--ui-shadow-dark);
+}
+
+/* Modal Overlay & Forms */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -95,7 +195,7 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(40, 40, 40, 0.6);
+  background: var(--modal-overlay-bg);
   z-index: 1000;
   justify-content: center;
   align-items: center;
@@ -105,14 +205,15 @@ h1 {
   display: flex;
 }
 
-/* Form Container inside Modal */
 .form-container {
   width: 90%;
-  max-width: 450px;
-  background: linear-gradient(180deg, #f5f5f5 0%, #d0d2d1 100%);
+  max-width: 460px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--ui-bg-gradient);
   padding: 18px;
-  border: 2px solid #5a5c5b;
-  box-shadow: inset 1px 1px 0px #fff, 5px 5px 0px #2a2b2a;
+  border: 2px solid var(--ui-border-dark);
+  box-shadow: inset 1px 1px 0px var(--ui-highlight), 5px 5px 0px var(--ui-shadow-dark);
 }
 
 .modal-header {
@@ -120,24 +221,24 @@ h1 {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
-  border-bottom: 2px solid #7a7c7b;
+  border-bottom: 2px solid var(--ui-border);
   padding-bottom: 8px;
 }
 
 .modal-header h2 {
   margin: 0;
   font-size: 1.1rem;
-  color: #2b2b2b;
+  color: var(--text-heading);
   text-transform: uppercase;
 }
 
 .close-btn {
-  background: #c8cac9;
-  border: 1px solid #5a5c5b;
+  background: var(--ui-border);
+  border: 1px solid var(--ui-border-dark);
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-  color: #1a1a1a;
+  color: var(--text-main);
   padding: 0 6px;
 }
 
@@ -147,120 +248,184 @@ h1 {
   width: 100%;
   margin-bottom: 10px;
   padding: 8px;
-  border: 2px solid #7a7c7b;
-  background: #ffffff;
+  border: 2px solid var(--ui-border);
+  background: var(--input-bg);
+  color: var(--text-main);
   font-size: 0.85rem;
   outline: none;
 }
 
+.char-counter {
+  display: block;
+  text-align: right;
+  font-size: 0.7rem;
+  color: var(--card-seller-text);
+  margin-top: -6px;
+  margin-bottom: 8px;
+}
+
+.form-error {
+  color: #d32f2f;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
 .form-container button[type="submit"] {
-  background: linear-gradient(180deg, #e6e6e6 0%, #b0b2b1 100%);
-  color: #1a1a1a;
+  background: var(--fab-bg-gradient);
+  color: var(--text-main);
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
-  box-shadow: 2px 2px 0px #4a4b4a;
+  box-shadow: 2px 2px 0px var(--ui-shadow);
   margin-top: 5px;
 }
 
-.form-container button[type="submit"]:active {
-  box-shadow: none;
-  transform: translate(2px, 2px);
-}
-
-/* Corkboard Grid */
+/* Board Layout */
 .board-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
 }
 
-/* Metallic Y2K Cards */
-.card {
+/* 3D Polaroid Card Flip Container */
+.card-container {
+  perspective: 1000px;
+  min-height: 330px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.card-container.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  box-shadow: 4px 4px 0px var(--card-shadow);
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  background: #f4f4f4;
-  border: 2px solid #7a7c7b;
-  box-shadow: 4px 4px 0px #4a4b4a;
-  padding: 12px 12px 18px 12px;
   overflow: hidden;
+  word-break: break-word;
 }
 
-/* Window Header Bar Accent */
-.card::before {
+.card-face::before {
   content: '';
   display: block;
-  height: 12px;
-  background: linear-gradient(90deg, #8a8c8b 0%, #c8cac9 100%);
+  height: 10px;
+  background: var(--card-header-gradient);
   margin: -12px -12px 10px -12px;
-  border-bottom: 1px solid #7a7c7b;
+  border-bottom: 1px solid var(--card-border);
 }
 
-.card h3 {
-  margin: 0 0 5px 0;
-  font-size: 1rem;
-  color: #1a1a1a;
+/* Card Front */
+.card-front img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border: 1px solid var(--card-border);
+  filter: var(--card-img-filter);
+}
+
+.card-front h3 {
+  margin: 8px 0 4px 0;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-front .price {
+  font-weight: bold;
+  color: var(--card-price-color);
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.card-front .seller {
+  font-size: 0.75rem;
+  color: var(--card-seller-text);
+  margin-top: auto;
+  border-top: 1px dashed var(--card-divider);
+  padding-top: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flip-hint {
+  font-size: 0.65rem;
+  color: var(--card-seller-text);
+  text-align: right;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* Card Back */
+.card-back {
+  transform: rotateY(180deg);
+  justify-content: space-between;
+}
+
+.card-back h3 {
+  margin: 0 0 10px 0;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--card-divider);
+  padding-bottom: 4px;
+  color: var(--text-main);
   text-transform: uppercase;
 }
 
-.card .price {
-  font-weight: bold;
-  color: #1b5e20;
-  font-size: 0.95rem;
-  margin-bottom: 8px;
-}
-
-.card img {
-  width: 100%;
-  max-height: 140px;
-  object-fit: cover;
-  border: 1px solid #7a7c7b;
-  margin-top: 4px;
-  filter: grayscale(20%);
-}
-
-.card p {
+.card-back .description {
   font-size: 0.8rem;
-  color: #333;
-  margin: 8px 0;
-  line-height: 1.3;
+  color: var(--card-text);
+  line-height: 1.35;
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: 180px;
+  padding-right: 4px;
 }
 
-.card .seller {
-  font-size: 0.75rem;
-  color: #555;
-  margin-top: 10px;
-  border-top: 1px dashed #aaaaaa;
-  padding-top: 6px;
-}
-
-.card-content {
-  display: flex;
-  flex-direction: column;
+.card-back .meta-info {
+  border-top: 1px dashed var(--card-divider);
+  padding-top: 8px;
   margin-top: 8px;
-  margin-bottom: 8px
+  font-size: 0.75rem;
+  color: var(--card-seller-text);
 }
 
+.card-back .date {
+  font-size: 0.7rem;
+  display: block;
+  margin-top: 2px;
+}
+
+/* Image Container */
 .image-container {
   width: 100%;
   aspect-ratio: 4/3;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.05);
   overflow: hidden;
   position: relative;
-}
-
-.image-container.skeleton {
-  background: linear-gradient(90deg, #d8dcdb 25%, #f0f0f0 50%, #d8dcdb 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
 }
 
 .image-container img {
@@ -277,6 +442,18 @@ h1 {
   opacity: 1;
 }
 
+/* Help Guide List */
+.help-list {
+  padding-left: 20px;
+  margin: 10px 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.help-list li {
+  margin-bottom: 8px;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -289,33 +466,66 @@ h1 {
   border: 0;
 }
 
-/*Mobile Spacing*/
-@media (max-width: 520px) {
-  .top-bar {
-    position: static;
+/* Compact Mobile Sticky Top Bar & Strict 2-Column Grid */
+@media (max-width: 600px) {
+  body {
+    padding: 8px 6px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
     margin-bottom: 12px;
   }
 
+  /* Compact top bar layout for small screens */
+  .top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 4px;
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+
+  .top-bar input,
+  .top-bar select {
+    min-height: 36px;
+    padding: 4px 6px;
+    font-size: 0.75rem;
+    flex: 1 1 100%; /* Compact stacked layout with reduced height */
+  }
+
+  /* Force 2-Column layout on mobile */
   .board-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)); /*2 columns*/
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
   }
 
-  .card {
+  /* Adjust card container proportions for 2-column mobile layout */
+  .card-container {
+    min-height: 250px;
+  }
+
+  .card-face {
     padding: 6px;
-    box-shadow: 2px 2px 0px #4a4b4a;
   }
 
-  .image-container {
-    height: 120px;
+  .card-front h3, .card-back h3 {
+    font-size: 0.8rem;
   }
 
-  .card-content h3 {
-    font-size: 0.85rem;
+  .card-front .price {
+    font-size: 0.8rem;
   }
 
-  .card-content p, 
-  .card-content small {
-    font-size: 0.75rem;
+  /* Shrink floating buttons slightly on mobile so they don't cover cards */
+  .fab, .fab-help {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    bottom: 15px;
   }
+
+  .fab { right: 15px; }
+  .fab-help { left: 15px; }
 }
